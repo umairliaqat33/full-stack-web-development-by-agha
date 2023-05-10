@@ -24,12 +24,14 @@ def add_emp(request):
         salary = int(request.POST['salary'])
         bonus = int(request.POST['bonus'])
         phone = int(request.POST['phone'])
-        depat = request.POST['dept']
-        role = request.POST['role']
+        depat = int(request.POST['dept'])
+        role = int(request.POST['role'])
         hire_date = request.POST['hire_date']
-        new_emp = Employee(firstName=firstName, lastName=lastName, salary=salary,
-                           bonus=bonus, phone=phone, dept=Department(), role=Roles(), hire_date=datetime.now())
+        new_emp = Employee(firstName=firstName, lastName=lastName, salary=salary, bonus=bonus,
+                           phone=phone, dept=Department(), role=Roles(), hire_date=datetime.now())
+        print(new_emp)
         new_emp.save()
+
         return HttpResponse("University Employee added Successfully")
     elif request.method == "GET":
         return render(request, "add_emp.html")
