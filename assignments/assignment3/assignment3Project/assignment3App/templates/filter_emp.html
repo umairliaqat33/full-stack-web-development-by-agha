@@ -13,7 +13,7 @@
     <title>Filter Employee</title>
     <style>
         body {
-            background-image: url(https://shiftin.app/wp-content/uploads/2021/10/what-are-employee-management-systems.jpg);
+            background-image: url(https://wallpapercave.com/wp/wp7452543.jpg);
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -23,9 +23,20 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>Hello, world! This is Umair in Filter Employee</h1>
+    <div class="container text-center">
+        <h1>Filter an Employee from System</h1>
         <hr>
+        <form action="/filter_emp" method="post">
+            {% csrf_token %}
+            <label for="name">Employee First/Last Name</label><br>
+            <input type="text" id="name" name="name" placeholder="Enter First/Last Name" value="{{name}}"><br>
+            <label for="dept">Department</label><br>
+            <input type="text" id="dept" name="dept" placeholder="Enter Department" value="{{dept}}"><br>
+            <label for="role">Role</label><br>
+            <input type="text" id="role" name="role" placeholder="Enter Role" value="{{role}}"><br>
+            <br>
+            <button type="submit" class="btn btn-warning">Filter university Employee</button>
+        </form>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
