@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from .models import Employee, Role, Department
+from .models import Employee, Role, Department, Feedback
 from datetime import datetime
 from django.db.models import Q
 # Create your views here.
@@ -19,7 +19,6 @@ def view_all_emp(request):
 
 
 def add_emp(request):
-
     if request.method == 'POST':
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
@@ -78,3 +77,24 @@ def filter_emp(request):
         return render(request, "filter_emp.html")
     else:
         return HttpResponse('An Exception Occured')
+
+
+def location(request):
+    return render(request, "location.html")
+
+
+def send_feedback(request):
+    if request.method == 'POST':
+        dept_name = request.POST['dept_name']
+        description = request.POST['description']
+
+        feed = Feedback(dept_name=dept_name, description=description)
+        feed.save()
+
+        return HttpResponse('Feedback added successfuly')
+    elif request.method == 'GET':
+        return render(request, 'feedback.html')
+    else:
+        return HttpResponse('An Exception Occured')
+
+    return render(request, "feedback.html")
